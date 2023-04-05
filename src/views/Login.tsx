@@ -3,17 +3,29 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 interface User {
-    name: string,
+    username: string,
     password: string,
 }
 
-const LOGIN = 'https://akademia108.pl/api/social-app/user/login';
+interface LoginResponse {
+    data: {
+        username: string,
+        ttl: number,
+        jwt_token: string,
+        id: number,
+        error: boolean,
+    }
+}
+
+const LOGIN: string = 'https://akademia108.pl/api/social-app/user/login';
 
 
 const Login = (): JSX.Element => {
 
     const [userName, setUserName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
+
+    const navigate = useNavigate();
 
     const readAndSetUsername = (event: React.FormEvent<HTMLInputElement>): void => {
         event.preventDefault();
@@ -29,14 +41,17 @@ const Login = (): JSX.Element => {
         event.preventDefault();
 
         const user: User = {
-            name: userName,
+            username: userName,
             password: password,
         }
 
         axios
             .post(LOGIN, user)
-            .then(response => {
+            .then((response: LoginResponse) => {
+                console.log(response);
+                navigate('/');
             })
+            .catch((error: boolean) => console.error(error));
     }
 
     return (
