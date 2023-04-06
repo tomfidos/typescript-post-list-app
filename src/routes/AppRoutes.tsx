@@ -1,20 +1,19 @@
 import { Routes, Route } from 'react-router-dom';
-
-import Login from '../views/Login';
-import Home from '../views/Home';
-import { User } from '../App';
 import { ReactElement } from 'react';
 
+import Home from '../views/Home';
+import { UserData } from '../App';
+
 interface RoutesProps {
-    user: User,
+    user: UserData,
+    setUserLoginResponseData: (isLogged: boolean, token: string) => void,
 }
 
 
 const AppRoutes = (props: RoutesProps): ReactElement => {
     return (
         <Routes>
-            {props.user.isLogged && <Route path="/" element={<Home />} />}
-            {!props.user.isLogged && <Route path="login" element={<Login />} />}
+            <Route path="/" element={<Home user={props.user} setUserLoginResponseData={props.setUserLoginResponseData} />} />
         </Routes>
     );
 }

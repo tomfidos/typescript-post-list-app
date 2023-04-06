@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
-interface User {
+interface LoginProps {
+    setUserLoginResponseData: (isLogged: boolean, token: string) => void,
+}
+
+interface LoggingUser {
     username: string,
     password: string,
 }
@@ -20,12 +23,10 @@ interface LoginResponse {
 const LOGIN: string = 'https://akademia108.pl/api/social-app/user/login';
 
 
-const Login = (): JSX.Element => {
+const Login = (props: LoginProps): JSX.Element => {
 
     const [userName, setUserName] = useState<string>('');
     const [password, setPassword] = useState<string>('');
-
-    const navigate = useNavigate();
 
     const readAndSetUsername = (event: React.FormEvent<HTMLInputElement>): void => {
         event.preventDefault();
@@ -40,7 +41,7 @@ const Login = (): JSX.Element => {
     const login = (event: React.SyntheticEvent): void => {
         event.preventDefault();
 
-        const user: User = {
+        const user: LoggingUser = {
             username: userName,
             password: password,
         }
@@ -49,15 +50,15 @@ const Login = (): JSX.Element => {
             .post(LOGIN, user)
             .then((response: LoginResponse) => {
                 console.log(response);
-                navigate('/');
+                props.setUserLoginResponseData(true, response.data.jwt_token);
             })
             .catch((error: boolean) => console.error(error));
     }
 
     return (
         <form onSubmit={login} className="form">
-            <input placeholder="User name" onChange={readAndSetUsername} className="input"/>
-            <input placeholder="Password" onChange={readAndSetPassword} className="input"/>
+            <input placeholder="User name" onChange={readAndSetUsername} className="input" />
+            <input placeholder="Password" onChange={readAndSetPassword} className="input" />
             <button type="submit" className="button">Login</button>
         </form>
     );
