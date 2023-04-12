@@ -1,3 +1,5 @@
+import './Post.css';
+
 interface PostProps {
     avatar: string,
     userName: string,
