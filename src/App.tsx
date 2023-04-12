@@ -9,6 +9,8 @@ interface UserData {
   jwt_token: string,
 }
 
+const LOGOUT = 'https://akademia108.pl/api/social-app/user/logout';
+
 
 function App() {
 
@@ -25,9 +27,21 @@ function App() {
     });
   }
 
+  const logoutUser = (): void => {
+    axios
+        .post(LOGOUT)
+        .then(() => {
+            setUser({
+              isLogged: false,
+              jwt_token: '',
+            });
+        })
+        .catch(error => console.error(error));
+}
+
   return (
     <div className="app">
-      <AppRoutes user={user} setUserLoginResponseData={setUserLoginResponseData} />
+      <AppRoutes user={user} setUserLoginResponseData={setUserLoginResponseData} logoutUser={logoutUser} />
     </div>
   );
 }
