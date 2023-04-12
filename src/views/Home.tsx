@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 import Post from '../components/Post';
 import Login from './Login';
-import { UserData } from '../App';
-import { useState, useEffect } from 'react';
+import { UserData } from '../types/UserTypes';
+import { LatestPostResponse, SinglePost } from '../types/PostTypes';
 import './Home.css';
 
 interface HomeProps {
@@ -12,24 +13,7 @@ interface HomeProps {
     logoutUser: () => void,
 }
 
-interface LatestPostResponse {
-    data: SinglePost,
-}
-
-interface SinglePost {
-    id: number,
-    user: {
-        avatar_url: string,
-        username: string,
-    }
-    user_id: number,
-    content: string,
-    created_at: string,
-    updated_at: string,
-    likes: [],
-}
-
-const LATEST_POSTS = 'https://akademia108.pl/api/social-app/post/latest';
+const LATEST_POSTS: string = 'https://akademia108.pl/api/social-app/post/latest';
 
 
 const Home = (props: HomeProps): JSX.Element => {

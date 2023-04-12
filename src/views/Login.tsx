@@ -1,23 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+import { LoggingUser, LoginResponse } from '../types/LoginTypes';
+
 interface LoginProps {
     setUserLoginResponseData: (isLogged: boolean, token: string) => void,
-}
-
-interface LoggingUser {
-    username: string,
-    password: string,
-}
-
-interface LoginResponse {
-    data: {
-        username: string,
-        ttl: number,
-        jwt_token: string,
-        id: number,
-        error: boolean,
-    }
 }
 
 const LOGIN: string = 'https://akademia108.pl/api/social-app/user/login';

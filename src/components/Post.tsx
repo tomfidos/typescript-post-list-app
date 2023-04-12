@@ -1,3 +1,4 @@
+import { LikingUser } from '../types/PostTypes';
 import './Post.css';
 
 interface PostProps {
@@ -5,7 +6,7 @@ interface PostProps {
     userName: string,
     postDate: string,
     postText: string,
-    likes: object[],
+    likes: LikingUser[],
 }
 
 
