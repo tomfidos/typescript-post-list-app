@@ -7,13 +7,14 @@ import { UserData } from '../App';
 interface RoutesProps {
     user: UserData,
     setUserLoginResponseData: (isLogged: boolean, token: string) => void,
+    logoutUser: () => void,
 }
 
 
 const AppRoutes = (props: RoutesProps): ReactElement => {
     return (
         <Routes>
-            <Route path="/" element={<Home user={props.user} setUserLoginResponseData={props.setUserLoginResponseData} />} />
+            <Route path="/" element={<Home user={props.user} setUserLoginResponseData={props.setUserLoginResponseData} logoutUser={props.logoutUser} />} />
         </Routes>
     );
 }

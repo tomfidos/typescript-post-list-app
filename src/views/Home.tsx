@@ -4,10 +4,12 @@ import Post from '../components/Post';
 import Login from './Login';
 import { UserData } from '../App';
 import { useState, useEffect } from 'react';
+import './Home.css';
 
 interface HomeProps {
     user: UserData,
     setUserLoginResponseData: (isLogged: boolean, token: string) => void,
+    logoutUser: () => void,
 }
 
 interface LatestPostResponse {
@@ -45,14 +47,19 @@ const Home = (props: HomeProps): JSX.Element => {
 
     useEffect(() => {
         getLatestPosts();
-    }, [props.user.isLogged]);
+    }, []);
 
     return (
         <div>
             {!props.user.isLogged && <Login setUserLoginResponseData={props.setUserLoginResponseData} />}
-            {props.user.isLogged && latestPosts.map(post => {
-                return (<Post key={post.id} avatar={post.user.avatar_url} userName={post.user.username} postDate={post.created_at} postText={post.content} likes={post.likes} />);
-            })}
+            {props.user.isLogged &&
+                <div>
+                    <span className="logout" onClick={props.logoutUser}>logout</span>
+                    {latestPosts.map(post => {
+                        return (<Post key={post.id} avatar={post.user.avatar_url} userName={post.user.username} postDate={post.created_at} postText={post.content} likes={post.likes} />);
+                    })}
+                </div>
+            }
         </div>
     );
 }
