@@ -1,6 +1,24 @@
-# Getting Started with Create React App
+# Description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project contains a code for a very simple social app made in React with TypeScript. You can perform a sample user log in, see his post feed and logout.
+
+## Underlying API
+
+The app makes requests to an API prepared, maintained and shared by [Akademia 108](https://akademia108.pl/). KUDOS for them for it.
+
+Its URL is: [https://akademia108.pl/api/social-app/](https://akademia108.pl/api/social-app/).
+
+## User login
+
+If you want to check a user login functionality use only following **username**: \
+*adam*, *tomek* or *mietek*, \
+all with the same **password**: \
+*1234*. \
+This limitation results from the mock user signup performed by the API.
+
+## Usage
+
+This is rather self-explanatory. Just login and check it up.
 
 ## Available Scripts
 
@@ -15,6 +33,8 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ### `npm test`
+
+### **TBA**
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
@@ -39,8 +59,8 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+# Miscellaneous
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Create React App usage
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). This means built-in **jest**, **webpack** and **babel** installations (see ```node_modules``` folder).
