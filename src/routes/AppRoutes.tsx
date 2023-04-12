@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import { ReactElement } from 'react';
 
 import Home from '../views/Home';
-import { UserData } from '../App';
+import { UserData } from '../types/UserTypes';
 
 interface RoutesProps {
     user: UserData,

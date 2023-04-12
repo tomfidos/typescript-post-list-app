@@ -3,13 +3,9 @@ import axios from 'axios';
 
 import './App.css';
 import AppRoutes from './routes/AppRoutes';
+import { UserData } from './types/UserTypes';
 
-interface UserData {
-  isLogged: boolean,
-  jwt_token: string,
-}
-
-const LOGOUT = 'https://akademia108.pl/api/social-app/user/logout';
+const LOGOUT: string = 'https://akademia108.pl/api/social-app/user/logout';
 
 
 function App() {
@@ -47,4 +43,3 @@ function App() {
 }
 
 export default App;
-export type { UserData };
